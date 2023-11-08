@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func get_scoreboard(sport string, league string, date string) string {
+func GetScoreboard(sport string, league string, date string) string {
 	resp, err := http.Get("https://jsonplaceholder.typicode.com/posts")
 	if err != nil {
 		log.Fatalln(err)
