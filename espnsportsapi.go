@@ -1,10 +1,27 @@
-package greetings
+package espnsportsapi
 
-import "fmt"
+import (
+	"io"
+	"log"
+	"net/http"
+)
 
-// Hello returns a greeting for the named person.
-func Hello(name string) string {
-	// Return a greeting that embeds the name in a message.
-	message := fmt.Sprintf("Hi, %v. Welcome!", name)
-	return message
+func get_scoreboard(sport string, league string, date string) string {
+	resp, err := http.Get("https://jsonplaceholder.typicode.com/posts")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	//We Read the response body on the line below.
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	//Convert the body to type string
+	sb := string(body)
+	return sb
+}
+
+func main() {
+	sb := get_scoreboard("nfl", "nfl", "20190905")
+	log.Println(sb)
 }
