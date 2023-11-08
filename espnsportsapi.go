@@ -20,8 +20,3 @@ func get_scoreboard(sport string, league string, date string) string {
 	sb := string(body)
 	return sb
 }
-
-func main() {
-	sb := get_scoreboard("nfl", "nfl", "20190905")
-	log.Println(sb)
-}
